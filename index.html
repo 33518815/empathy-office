@@ -6,53 +6,73 @@
         :root { --primary: #001f3f; --accent: #d4af37; --bg: #fdfdfd; }
         body { font-family: 'Apple SD Gothic Neo', sans-serif; margin: 0; padding: 0; color: #333; background-color: var(--bg); word-break: keep-all; }
         
-        header { background: var(--primary); color: #fff; padding: 45px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
-        .header-content { display: flex; flex-direction: column; align-items: center; }
+        header { background: var(--primary); color: #fff; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .header-content { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .header-main { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 5px; }
         
-        /* [심볼] G를 둘러싼 원형 돋보기와 우측 하단 손잡이 */
-        .header-main { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
+        /* [수정] G와 돋보기 비례 최적화 - G를 더 크게, 원형은 밀착 */
         .magnifier-g {
-            position: relative; width: 45px; height: 45px;
-            border: 3px solid var(--accent); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; font-weight: 900; color: var(--accent);
-            flex-shrink: 0; box-shadow: 0 0 10px rgba(212,175,55,0.2);
+            position: relative; 
+            width: 40px; 
+            height: 40px;
+            border: 2.5px solid var(--accent); 
+            border-radius: 50%;
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 26px; /* G 크기 확대 */
+            font-weight: 900; 
+            color: var(--accent);
+            box-sizing: border-box;
+            padding-bottom: 2px; /* G 위치 미세조정 */
         }
         .magnifier-g::after {
-            content: ''; position: absolute; bottom: -6px; right: -6px;
-            width: 4px; height: 16px; background: var(--accent);
-            transform: rotate(-45deg); border-radius: 2px;
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 4px;
+            height: 12px;
+            background-color: var(--accent);
+            transform: rotate(-45deg);
+            border-radius: 1px;
         }
 
-        header h1 { margin: 0; font-size: 1.9em; letter-spacing: 2px; font-weight: 800; }
-        .header-sub-eng { color: var(--accent); font-size: 0.85em; letter-spacing: 1.2px; font-weight: 500; margin-top: 8px; }
+        header h1 { margin: 0; font-size: 1.9em; letter-spacing: 1px; font-weight: 800; }
+        .header-sub-eng { color: var(--accent); font-size: 0.82em; letter-spacing: 1.2px; font-weight: 500; margin-top: 6px; }
         
         nav { background: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 35px; padding: 15px 0; }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.95em; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
-        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 35px; }
-        @media (max-width: 650px) { .service-grid { grid-template-columns: 1fr; } }
-
-        .card { background: #fff; padding: 25px; border: 1px solid #ddd; border-top: 4px solid var(--accent); }
+        /* 전체 컨테이너 너비 고정으로 세로줄 일치 */
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; box-sizing: border-box; }
+        
+        /* 가로 2칸 4줄 그리드 */
+        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .card { background: #fff; padding: 25px; border: 1px solid #ddd; border-top: 4px solid var(--accent); box-sizing: border-box; }
         .card h3 { margin-top: 0; font-size: 1.15em; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 12px; }
-        .card p { font-size: 0.9em; line-height: 1.7; color: #444; }
+        .card p { font-size: 0.88em; line-height: 1.7; color: #444; margin: 0; }
         .highlight { color: #b22222; font-weight: bold; }
 
-        .bottom-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin-top: 20px; }
-        .business-card-panel { background: #fff; border: 1px solid #ccc; padding: 25px; position: relative; }
+        /* [수정] 하단 섹션도 상단 업무안내와 동일한 1:1 비율 그리드로 세로줄 맞춤 */
+        .bottom-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+        .business-card-panel { background: #fff; border: 1px solid #ccc; padding: 25px; position: relative; box-sizing: border-box; }
         .card-line { position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary); }
         .promo-text { font-size: 1em; color: var(--primary); font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
         
-        .form-panel { background: #fff; border: 1px solid var(--primary); padding: 25px; }
-        .submit-btn { background: var(--primary); color: var(--accent); width: 100%; padding: 15px; border: none; font-weight: bold; cursor: pointer; font-size: 1.05em; transition: 0.3s; }
-        .submit-btn:hover { background: #002d5c; }
+        .form-panel { background: #fff; border: 1px solid var(--primary); padding: 25px; box-sizing: border-box; }
+        .form-panel h3 { margin-top: 0; font-size: 1.15em; color: var(--primary); margin-bottom: 15px; }
+        .submit-btn { background: var(--primary); color: var(--accent); width: 100%; padding: 15px; border: none; font-weight: bold; cursor: pointer; font-size: 1.05em; }
         
-        footer { background: #000c1a; color: #aaa; padding: 50px 20px; text-align: center; font-size: 0.85em; }
+        footer { background: #000c1a; color: #aaa; padding: 60px 20px; text-align: center; font-size: 0.85em; }
         .footer-logo { font-size: 2.1em; color: #fff; font-weight: 800; margin-bottom: 15px; display: block; }
-        .addr-grid { margin-top: 35px; display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 15px 35px; border-top: 1px solid #222; padding-top: 25px; text-align: left; max-width: 950px; margin-left: auto; margin-right: auto; }
+        .addr-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px 35px; border-top: 1px solid #222; padding-top: 30px; text-align: left; max-width: 950px; margin-left: auto; margin-right: auto; }
         .lang-tag { color: var(--accent); font-weight: bold; margin-right: 10px; }
-        @media (max-width: 768px) { .bottom-section { grid-template-columns: 1fr; } }
+
+        @media (max-width: 768px) { 
+            .service-grid, .bottom-section { grid-template-columns: 1fr; } 
+            header h1 { font-size: 1.5em; }
+        }
     </style>
 </head><body>
 
@@ -72,42 +92,40 @@
 
 <div class="container">
     <section id="service" class="service-grid">
-        <div class="card"><h3>⚖️ 행정심판·의견제출</h3><p>영업정지 및 면허취소 구제 지원과 처분사전통지에 대한 정밀한 의견제출서 작성을 전문으로 합니다.</p></div>
-        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립 및 각종 인허가 대행 업무를 원스톱으로 신속하고 정확하게 대리하여 드립니다.</p></div>
-        <div class="card"><h3>✉️ 내용증명·권리금계약</h3><p>권리관계 및 사실관계 존재 확인을 위한 전문 내용증명과 상가 권리금 계약 자문 및 검토를 지원합니다.</p></div>
-        <div class="card"><h3>📝 사실조사·증거수집</h3><p>사건 실체 규명을 위한 PIA 사실조사와 권리 구제에 필수적인 증거 자료를 합법적으로 수집합니다.</p></div>
-        <div class="card"><h3>🔍 보안·프라이버시</h3><p>가정사, 기업 조사 및 도감청 탐색 등 의뢰인의 안전과 소중한 비밀 보호를 위해 정밀 보안 조사를 실시합니다.</p></div>
-        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>외국인 비자 번호 관련 전문 상담 및 각국 대사관 인증, 영사 확인 공증 대행 서비스를 제공합니다.</p></div>
-        <div class="card"><h3>📋 전국 민원대행 준비물</h3><p>전국 민원 등기 접수 시 <span class="highlight">신분증 원본(면허증/여권), 도장, 위임장</span>을 준비해 주세요. 즉시 업무에 착수합니다.</p></div>
-        <div class="card"><h3>🛡️ 고객신뢰·비밀유지</h3><p>전국 24시 상담 및 <span class="highlight">카드 결제 가능</span>하며, <span class="highlight">상담료 합의 및 근거리 출장 상담</span>이 가능합니다. 철저한 비밀 유지를 약속합니다.</p></div>
+        <div class="card"><h3>⚖️ 행정심판·의견제출</h3><p>영업정지 및 면허취소 구제와 처분사전통지에 대한 정밀한 서면 작성을 지원합니다.</p></div>
+        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립 및 각종 인허가 대행을 원스톱으로 신속하고 정확하게 처리해 드립니다.</p></div>
+        <div class="card"><h3>✉️ 내용증명·권리금계약</h3><p>권리관계 및 사실관계 존재 확인을 위한 전문 내용증명과 상가 권리금 계약을 자문합니다.</p></div>
+        <div class="card"><h3>📝 사실조사·증거수집</h3><p>사건 실체 규명을 위한 PIA 사실조사와 권리 구제에 필요한 증거를 합법적으로 수집합니다.</p></div>
+        <div class="card"><h3>🔍 보안·프라이버시</h3><p>가정사, 기업 조사 및 도감청 탐색 등 의뢰인의 안전과 비밀 보호를 위해 정밀 조사합니다.</p></div>
+        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>비자 번호 관련 전문 상담 및 각국 대사관 인증, 영사 확인 공증 대행 서비스를 제공합니다.</p></div>
+        <div class="card"><h3>📋 전국 민원대행 준비물</h3><p>전국 민원 등기 접수 시 <span class="highlight">신분증 원본(면허증/여권), 도장, 위임장</span>을 동봉해 주세요.</p></div>
+        <div class="card"><h3>🛡️ 고객신뢰·비밀유지</h3><p>전국 24시 상담, <span class="highlight">카드 결제 가능</span>, <span class="highlight">상담료 합의 및 근거리 출장</span>이 가능합니다.</p></div>
     </section>
 
     <div class="bottom-section" id="bottom">
         <div class="business-card-panel">
             <div class="card-line"></div>
-            <div class="promo-text">권리관계·사실관계 존재 확인 전문 기관</div>
+            <div class="promo-text">전국 대행 민원 안내</div>
             <div style="font-size:0.9em; line-height:1.9; color:#444;">
-                <strong>[전국 비대면 접수 안내]</strong><br>
-                준비 서류를 우편으로 보내주시면 전국 어디든 처리가 가능합니다.<br><br>
-                <strong>송부처 주소:</strong> 서울특별시 종로구 우정국로 39 우정에쉐르 401호<br><br>
-                <span style="color:#b22222; font-weight:bold;">※ 상담료 합의 가능 및 근거리 지역 방문 서류 수거 가능</span>
+                준비된 서류를 우편으로 보내주시면 전국 어디서든 처리가 가능합니다.<br><br>
+                <strong>송부처:</strong> 서울특별시 종로구 우정국로 39 우정에쉐르 401호<br><br>
+                <span style="color:#b22222; font-weight:bold;">※ 상담료 합의 가능 및 근거리 지역 방문 상담 가능</span>
             </div>
         </div>
         <div class="form-panel">
-            <h3 style="margin-top:0; font-size:1.15em; color:var(--primary); margin-bottom:15px;">종합 상담 신청</h3>
+            <h3>종합 상담 신청</h3>
             <form onsubmit="sendEmail(event)">
-                <div class="form-group" style="margin-bottom:12px;"><label style="display:block; font-size:0.85em; font-weight:bold; margin-bottom:4px; color:var(--primary);">의뢰인 성함</label><input type="text" id="name" style="width:100%; padding:10px; border:1px solid #ccc; box-sizing:border-box;" required></div>
-                <div class="form-group" style="margin-bottom:12px;"><label style="display:block; font-size:0.85em; font-weight:bold; margin-bottom:4px; color:var(--primary);">연락처</label><input type="tel" id="tel" style="width:100%; padding:10px; border:1px solid #ccc; box-sizing:border-box;" required></div>
-                <div class="form-group" style="margin-bottom:12px;">
-                    <label style="display:block; font-size:0.85em; font-weight:bold; margin-bottom:4px; color:var(--primary);">상담 구분</label>
-                    <select id="category" style="width:100%; padding:10px; border:1px solid #ccc; box-sizing:border-box;" required>
-                        <option value="">선택해주세요</option>
+                <div style="margin-bottom:10px;"><input type="text" id="name" placeholder="의뢰인 성함" style="width:100%; padding:11px; border:1px solid #ccc; box-sizing:border-box;" required></div>
+                <div style="margin-bottom:10px;"><input type="tel" id="tel" placeholder="연락처" style="width:100%; padding:11px; border:1px solid #ccc; box-sizing:border-box;" required></div>
+                <div style="margin-bottom:10px;">
+                    <select id="category" style="width:100%; padding:11px; border:1px solid #ccc; box-sizing:border-box;" required>
+                        <option value="">상담 구분 선택</option>
                         <option value="행정/비자">행정심판 · 비자 · 공증</option>
                         <option value="조사/탐정">사실조사 · 탐정업무</option>
                         <option value="서면/계약">내용증명 · 계약작성</option>
                     </select>
                 </div>
-                <div class="form-group" style="margin-bottom:15px;"><label style="display:block; font-size:0.85em; font-weight:bold; margin-bottom:4px; color:var(--primary);">문의 내용</label><textarea id="message" rows="2" style="width:100%; padding:10px; border:1px solid #ccc; box-sizing:border-box;"></textarea></div>
+                <div style="margin-bottom:15px;"><textarea id="message" rows="2" placeholder="문의 내용 (간략히)" style="width:100%; padding:11px; border:1px solid #ccc; box-sizing:border-box;"></textarea></div>
                 <button type="submit" class="submit-btn">상담 신청서 메일 보내기</button>
             </form>
         </div>
@@ -116,7 +134,7 @@
 
 <footer>
     <span class="footer-logo">공감탐정행정사사무소</span>
-    <div style="color:var(--accent); font-weight:bold; font-size:1.4em; margin-bottom:15px;">010-8128-1079</div>
+    <div style="color:var(--accent); font-weight:bold; font-size:1.5em; margin-bottom:15px;">010-8128-1079</div>
     <div style="margin-bottom:10px;">사업자번호: 821-46-01200 | FAX: 02-733-8816</div>
     <div class="addr-grid">
         <div class="addr-item"><span class="lang-tag">KR</span>서울특별시 종로구 우정국로 39, 우정에쉐르 401호</div>
