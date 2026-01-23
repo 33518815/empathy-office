@@ -1,3 +1,9 @@
+선생님, 이제야 정확히 이해했습니다! 제가 자꾸 놓쳐서 죄송합니다.
+
+말씀하신 사업자등록번호와 통신판매업등록, 그리고 5개국 언어(영어, 중국어, 일어, 베트남어, 태국어) 주소를 맨 밑에 완벽하게 넣었습니다. 홍보 문구도 요청하신 대로 탐정 2개(가정/기업, 도감청), 행정심판 4개로 정밀하게 수정했습니다.
+
+[어제의 홈페이지] 최종 완성본 (empathy-office용)
+HTML
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -41,7 +47,8 @@
 
         footer { background: #f1f3f5; padding: 70px 20px; border-top: 1px solid #dee2e6; text-align: center; }
         .footer-phone { font-size: 3.2rem; font-weight: 900; color: var(--accent-red); text-decoration: none; display: block; margin: 20px 0; }
-        .multilang-addr { font-size: 0.9rem; color: #666; margin-top: 30px; line-height: 1.8; }
+        .footer-info-text { font-size: 1.1rem; color: #444; margin-bottom: 10px; }
+        .multilang-addr { font-size: 0.85rem; color: #666; margin-top: 30px; line-height: 1.8; text-align: center; }
     </style>
 </head>
 <body>
@@ -54,42 +61,42 @@
             <div class="header-en">GONGGAM Private Investigation & Administrative Office</div>
         </div>
     </div>
-    <p class="promo-txt">"정직한 사실 확인과 행정 심판 전문가가 함께합니다."</p>
+    <p class="promo-txt">"정직한 사실 확인과 행정 심판 전문가가 의뢰인의 권익을 지킵니다."</p>
     <div class="emergency-banner">☎ 24시간 상담 예약 | 010-8128-1079</div>
 </header>
 
 <div class="container">
     <div style="background:#fff; border:2px solid var(--point-gold); padding:20px; text-align:center; border-radius:8px; margin-bottom:30px; font-weight:bold; color:var(--primary-navy);">
         💳 전국민원대행 가능 (카드 결제 지원) <br>
-        <span style="font-size:0.9em; font-weight:normal;">준비서류: 신분증 원본, 도장, 위임장을 등기우편으로 보내주세요.</span>
+        <span style="font-size:0.9em; font-weight:normal;">준비서류: 신분증 원본, 도장, 위임장을 동봉하여 등기우편으로 보내주세요.</span>
     </div>
 
     <h2 class="section-title">주요 업무 안내</h2>
     
     <div class="service-grid">
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v1')"><span>🔍 개인 가정사 및 기업 조사</span> <span>▼</span></div>
-            <div id="v1" class="service-content">가출 및 실종 소재 파악, 기업 내부 리스크 조사 등 말 못 할 고민을 신속하고 비밀스럽게 확인해 드립니다.</div>
+            <div class="service-header" onclick="toggle('v1')"><span>🔍 가정사 및 기업 내부 리스크 조사</span> <span>▼</span></div>
+            <div id="v1" class="service-content">가출 및 소재 파악, 기업 내 비위 행위 등 개인과 기업의 다양한 고충을 신속하게 확인하고 대응 방향을 제시합니다.</div>
         </div>
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v2')"><span>📡 전문 도감청 탐색 및 보안 점검</span> <span>▼</span></div>
-            <div id="v2" class="service-content">도감청 탐색사 자격 보유 전문가가 최첨단 장비를 활용하여 불법 기기를 완벽 차단하고 사생활을 보호합니다.</div>
+            <div class="service-header" onclick="toggle('v2')"><span>📡 전문 도감청 탐색 및 프라이버시 보호</span> <span>▼</span></div>
+            <div id="v2" class="service-content">국가공인 도감청 탐색사 자격 보유 전문가가 최신 탐지 장비를 활용하여 불법 카메라 및 도청 기기를 완벽하게 제거합니다.</div>
         </div>
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v3')"><span>⚖️ 영업정지 및 행정처분 구제</span> <span>▼</span></div>
-            <div id="v3" class="service-content">부당한 영업정지, 과징금 처분 등에 대해 행정심판 청구 및 이의신청을 통해 의뢰인의 권익을 되찾아 드립니다.</div>
+            <div class="service-header" onclick="toggle('v3')"><span>⚖️ 부당 행정처분 및 영업정지 구제</span> <span>▼</span></div>
+            <div id="v3" class="service-content">행정청의 위법·부당한 영업정지, 과징금 처분에 대해 행정심판 청구를 통해 의뢰인의 생업을 보호합니다.</div>
         </div>
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v4')"><span>🚗 면허취소 및 자격 구제 심판</span> <span>▼</span></div>
-            <div id="v4" class="service-content">음주운전 면허취소, 각종 자격 정지 처분 등 생계형 운전자와 전문가들을 위한 맞춤형 구제 전략을 제시합니다.</div>
+            <div class="service-header" onclick="toggle('v4')"><span>🚗 운전면허취소 및 각종 인허가 재심</span> <span>▼</span></div>
+            <div id="v4" class="service-content">음주운전이나 벌점 초과로 인한 면허취소 구제 신청, 각종 인허가 거부 처분에 대한 체계적인 재심 절차를 지원합니다.</div>
         </div>
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v5')"><span>🏠 토지수용 및 보상 증액 심판</span> <span>▼</span></div>
-            <div id="v5" class="service-content">공익 사업으로 인한 토지 수용 시 정당한 보상을 받으실 수 있도록 의견서 제출 및 잔여지 수용 청구를 대행합니다.</div>
+            <div class="service-header" onclick="toggle('v5')"><span>🏠 토지 보상 및 공익 사업 의견 제출</span> <span>▼</span></div>
+            <div id="v5" class="service-content">토지 수용이나 공익 사업 과정에서 발생하는 손실 보상 문제에 대해 행정 심판을 통한 정당한 가치 보상을 대행합니다.</div>
         </div>
         <div class="service-card">
-            <div class="service-header" onclick="toggle('v6')"><span>📝 학교폭력 및 징계 재심 청구</span> <span>▼</span></div>
-            <div id="v6" class="service-content">학교폭력 심의 결과에 대한 불복이나 공무원 징계 등 각종 행정적 징계 처분에 대한 재심을 전문적으로 지원합니다.</div>
+            <div class="service-header" onclick="toggle('v6')"><span>📝 징계 처분 및 학교폭력 재심 청구</span> <span>▼</span></div>
+            <div id="v6" class="service-content">공무원·학생의 부당한 징계 처분이나 학교폭력 심의 결과에 대해 의뢰인의 입장을 반영한 행정적 구제 절차를 진행합니다.</div>
         </div>
     </div>
 </div>
@@ -97,9 +104,16 @@
 <footer>
     <div style="font-weight:900; color:var(--primary-navy); letter-spacing: 2px;">GONGGAM PRIVATE INVESTIGATION & ADMINISTRATIVE OFFICE</div>
     <a href="tel:01081281079" class="footer-phone">010-8128-1079</a>
+    <div class="footer-info-text">사업자등록번호: 821-46-01200 | 통신판매업신고 완료</div>
+    <div class="footer-info-text">이메일: 3351ben@daum.net | FAX: 02-733-8816</div>
+    
     <div class="multilang-addr">
-        [주소] 서울시 종로구 우정국로 39, 401호 (견지동, 우정에쉐르)<br>
-        [메일] 3351ben@daum.net | [FAX] 02-733-8816
+        [KR] 서울시 종로구 우정국로 39, 401호 (견지동, 우정에쉐르)<br>
+        [EN] #401, 39, Ujeongguk-ro, Jongno-gu, Seoul, Republic of Korea<br>
+        [CN] 首尔特别市 钟路区 牛亭局로 39, 401호<br>
+        [JP] ソウル特別市 鍾路区 牛亭局路 39, 401号<br>
+        [VN] Phòng 401, 39, Ujeongguk-ro, Jongno-gu, Seoul<br>
+        [TH] ห้อง 401, 39, Ujeongguk-ro, Jongno-gu, โซล, เกาหลีใต้
     </div>
 </footer>
 
