@@ -11,14 +11,18 @@
         .header-main { display: flex; align-items: center; gap: 12px; }
         .header-symbol { width: 40px; height: 40px; border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--accent); font-weight: bold; }
         header h1 { margin: 0; font-size: 1.9em; letter-spacing: 2px; font-weight: 800; }
-        .header-sub-eng { color: var(--accent); font-size: 0.85em; letter-spacing: 1px; font-weight: 500; margin-top: 8px; opacity: 0.9; }
+        .header-sub-eng { color: var(--accent); font-size: 0.85em; letter-spacing: 1px; font-weight: 500; margin-top: 8px; }
         
         nav { background: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 35px; padding: 15px 0; }
         nav a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 0.9em; }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .card { background: #fff; padding: 25px; border: 1px solid #ddd; border-top: 4px solid var(--accent); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        
+        /* 가로 2칸씩 4줄 배치 (모바일은 자동으로 1칸) */
+        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px; }
+        @media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; } }
+
+        .card { background: #fff; padding: 25px; border: 1px solid #ddd; border-top: 4px solid var(--accent); height: 100%; box-sizing: border-box; }
         .card h3 { margin-top: 0; font-size: 1.1em; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 12px; }
         .card p { font-size: 0.88em; line-height: 1.7; color: #444; margin: 0; }
         .highlight { color: #b22222; font-weight: bold; }
@@ -38,8 +42,8 @@
         .footer-logo { font-size: 2.1em; color: #fff; font-weight: 800; margin-bottom: 10px; display: block; }
         .addr-grid { margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px 30px; border-top: 1px solid #222; padding-top: 25px; text-align: left; max-width: 950px; margin-left: auto; margin-right: auto; }
         .addr-item { line-height: 1.6; }
-        .lang-tag { color: var(--accent); font-weight: bold; margin-right: 8px; font-size: 0.9em; }
-        @media (max-width: 768px) { .bottom-section { grid-template-columns: 1fr; } .addr-grid { grid-template-columns: 1fr; } }
+        .lang-tag { color: var(--accent); font-weight: bold; margin-right: 8px; }
+        @media (max-width: 768px) { .bottom-section { grid-template-columns: 1fr; } }
     </style>
 </head><body>
 
@@ -59,14 +63,14 @@
 
 <div class="container">
     <section id="service" class="service-grid">
-        <div class="card"><h3>⚖️ 행정심판·의견제출</h3><p>영업정지, 면허취소 구제 지원 및 각종 불이익 처분에 대한 정교한 의견제출서 작성을 전문으로 합니다.</p></div>
-        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립, 공장등록 및 복잡한 행정 인허가 절차를 의뢰인의 입장에서 신속하고 정확하게 대행합니다.</p></div>
-        <div class="card"><h3>✉️ 내용증명·권리금계약</h3><p>권리관계 및 사실관계 존재 확인을 위한 전문 내용증명 작성과 상가 권리금 계약서 검토를 지원합니다.</p></div>
-        <div class="card"><h3>📝 사실조사·증거수집</h3><p>사건 실체 규명을 위한 PIA 사실조사 및 권리 구제에 필수적인 증거 자료를 합법적으로 수집합니다.</p></div>
-        <div class="card"><h3>🔍 보안·프라이버시</h3><p>가정사, 기업 조사 및 도감청 탐색 등 의뢰인의 안전과 소중한 비밀 보호를 위해 정밀 조사를 수행합니다.</p></div>
-        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>외국인 비자 번호 관련 업무 및 각국 대사관 인증, 영사 확인 공증 대행 서비스를 제공합니다.</p></div>
-        <div class="card"><h3>📋 전국 민원대행 준비물</h3><p>민원 등기 접수 시 <span class="highlight">신분증 원본(면허증/여권), 도장, 위임장</span>을 동봉해 주세요. 전국 어디든 즉시 착수합니다.</p></div>
-        <div class="card"><h3>🤝 고객안내·비밀유지</h3><p>전국 24시간 상담 및 <span class="highlight">카드 결제 가능</span>하며, <span class="highlight">상담료 합의 및 근거리 출장</span>이 가능합니다. 비밀 유지를 철저히 준수합니다.</p></div>
+        <div class="card"><h3>⚖️ 행정심판·의견제출</h3><p>영업정지 및 면허취소 구제 지원, 처분사전통지에 대한 정밀한 의견제출서 작성을 수행합니다.</p></div>
+        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립 및 각종 인허가 대행, 기업 관련 행정 절차를 원스톱으로 신속하게 처리해 드립니다.</p></div>
+        <div class="card"><h3>✉️ 내용증명·권리금계약</h3><p>권리관계 및 사실관계 존재 확인을 위한 내용증명과 상가 권리금 계약 자문 및 검토를 지원합니다.</p></div>
+        <div class="card"><h3>📝 사실조사·증거수집</h3><p>사건 실체 규명을 위한 PIA 사실조사와 권리 구제에 필요한 법적 증거 자료 수집을 전문으로 합니다.</p></div>
+        <div class="card"><h3>🔍 보안·프라이버시</h3><p>가정사 및 기업 조사, 도감청 탐색 등 의뢰인의 안전과 비밀 보호를 위해 정밀 조사를 실시합니다.</p></div>
+        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>외국인 비자 번호 관련 상담 및 각국 대사관 인증, 영사 확인 공증 대행 서비스를 제공합니다.</p></div>
+        <div class="card"><h3>📋 전국 민원대행 준비사항</h3><p>전국 민원 등기 접수 시 <span class="highlight">신분증 원본(면허증/여권), 도장, 위임장</span>을 준비해 주시면 즉시 업무에 착수합니다.</p></div>
+        <div class="card"><h3>🛡️ 고객신뢰·비밀유지</h3><p>전국 24시 상담 및 <span class="highlight">카드 결제 가능</span>하며, <span class="highlight">상담료 합의 및 근거리 출장 가능</span>합니다. 비밀 유지를 철저히 약속드립니다.</p></div>
     </section>
 
     <div class="bottom-section" id="bottom">
@@ -75,9 +79,9 @@
             <div class="promo-text">권리관계·사실관계 존재 확인 전문 기관</div>
             <div style="font-size:0.88em; line-height:1.8; color:#444;">
                 <strong>[전국 비대면 접수 안내]</strong><br>
-                준비 서류를 우편으로 보내주시면 전국 민원 처리가 가능합니다.<br><br>
+                서류를 동봉하여 우편으로 보내주시면 전국 어디든 처리 가능합니다.<br><br>
                 <strong>송부처:</strong> 서울특별시 종로구 우정국로 39 우정에쉐르 401호<br><br>
-                <span style="color:#b22222; font-weight:bold;">※ 상담료 합의 가능 및 근거리 방문 수거 서비스 제공</span>
+                <span style="color:#b22222; font-weight:bold;">※ 상담료 합의 가능 및 근거리 방문 상담 환영</span>
             </div>
         </div>
         <div class="form-panel">
@@ -91,7 +95,7 @@
                         <option value="">선택해주세요</option>
                         <option value="행정/비자">행정심판 · 비자 · 공증</option>
                         <option value="조사/탐정">사실조사 · 탐정업무</option>
-                        <option value="서면/계약">내용증명 · 계약자문</option>
+                        <option value="서면/계약">내용증명 · 계약작성</option>
                     </select>
                 </div>
                 <div class="form-group"><label>문의 내용</label><textarea id="message" rows="2"></textarea></div>
