@@ -11,11 +11,14 @@
         header h1 { margin: 0; font-size: 1.9em; letter-spacing: 2px; }
         nav { background: #fff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 35px; padding: 15px 0; font-size: 0.95em; }
         nav a { text-decoration: none; color: #333; font-weight: bold; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+        
+        /* 엠파티 오피스 디자인 그대로 유지한 8칸 그리드 */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .card { background: #fff; padding: 22px; border: 1px solid #ddd; border-top: 3px solid var(--primary); }
-        .card h3 { margin-top: 0; font-size: 1.1em; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 8px; }
-        .card p { font-size: 0.88em; line-height: 1.6; color: #555; }
+        .card h3 { margin-top: 0; font-size: 1.05em; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        .card p { font-size: 0.86em; line-height: 1.6; color: #555; margin-top: 10px; }
+
         .contract-box { background: #fff; border: 1px solid #eee; padding: 25px; margin-bottom: 30px; font-size: 0.88em; line-height: 1.7; }
         .bottom-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: stretch; }
         .business-card-panel { background: #fff; border: 1px solid #ccc; padding: 25px; position: relative; }
@@ -47,14 +50,16 @@
 <div class="container">
     <section id="service" class="service-grid">
         <div class="card"><h3>⚖️ 행정심판·의견제출</h3><p>처분사전통지서 의견제출서 작성, 영업정지 및 면허취소 구제 지원.</p></div>
-        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립, 공장등록, 권리금계약서 검토 등 행정 인허가 대행.</p></div>
-        <div class="card"><h3>📝 서면작성·사실조사</h3><p>내용증명, 진정서 작성 및 PIA 자격을 통한 사실관계 확인.</p></div>
+        <div class="card"><h3>🏢 법인설립·인허가</h3><p>법인설립, 공장등록, 행정 인허가 대행 및 사업자 관련 행정 지원.</p></div>
+        <div class="card"><h3>📝 사실조사·증거수집</h3><p>사건 실체 규명을 위한 PIA 사실조사 및 권리 구제에 필요한 자료 수집.</p></div>
         <div class="card"><h3>🔍 보안·프라이버시</h3><p>가정사 및 기업 조사, 도감청 탐색 등 권리 보호를 위한 보안 조사.</p></div>
-        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>F6, F5, F4, G1 비자 업무와 대사관 인증 및 영사 확인 대행.</p></div>
-        <div class="card"><h3>📜 권리관계 증명</h3><p>권리 및 사실관계가 존재함을 증명하는 행정 업무를 수행합니다.</p></div>
         
-        <div class="card"><h3>🤝 상가권리금·계약작성</h3><p>상가 권리금 계약서 작성 및 검토, 임대차 분쟁 등 행정적 자문 지원.</p></div>
-        <div class="card"><h3>📩 내용증명·서면대응</h3><p>각종 분쟁에 따른 내용증명 발송 및 사실확인서 등 서면 일체를 대행합니다.</p></div>
+        <div class="card"><h3>✈️ 출입국·비자·공증</h3><p>F6, F5, F4, G1 등 외국인 비자 업무와 대사관 인증 및 영사 확인 대행.</p></div>
+        
+        <div class="card"><h3>📜 권리관계 증명</h3><p>권리 및 사실관계가 존재함을 증명하는 행정 업무를 성실히 수행합니다.</p></div>
+
+        <div class="card"><h3>✉️ 내용증명·서면작성</h3><p>각종 분쟁에 따른 전문적인 내용증명 발송 및 진정서, 탄원서 작성을 대행합니다.</p></div>
+        <div class="card"><h3>📑 상가권리금·계약서</h3><p>상가 권리금 계약서 검토 및 작성, 독소 조항 확인 등 임대차 행정 자문을 지원합니다.</p></div>
     </section>
 
     <section id="contract" class="contract-box">
@@ -80,21 +85,21 @@
             <h3 style="margin-top:0; font-size:1.1em; color:var(--primary); margin-bottom:15px;">종합 상담 신청</h3>
             <form onsubmit="sendEmail(event)">
                 <div class="form-group"><label>의뢰인 성함</label><input type="text" id="name" required></div>
-                <div class="form-group"><label>연락처</label><input type="tel" id="tel" required></div>
+                <div class="form-group"><label>連絡처</label><input type="tel" id="tel" required></div>
                 <div class="form-group">
                     <label>상담 구분</label>
                     <select id="category" required>
                         <option value="">선택해주세요</option>
                         <option value="행정심판">행정심판 · 의견제출</option>
-                        <option value="탐정조사">탐정업무 · 사실조사</option>
-                        <option value="출입국">출입국 · 비자 · 공증</option>
                         <option value="내용증명">내용증명 · 계약자문</option>
+                        <option value="출입국">출입국 · 비자 · 공증</option>
+                        <option value="탐정조사">탐정업무 · 사실조사</option>
                         <option value="기타">기타 일반 행정</option>
                     </select>
                 </div>
                 <div class="form-group"><label>문의 내용</label><textarea id="message" rows="3"></textarea></div>
                 <button type="submit" class="submit-btn">상담 신청서 메일 보내기</button>
-                <div class="mail-notice">버튼이 작동하지 않을 경우 <strong>3351ben@daum.net</strong>으로<br>직접 메일 주시면 확인 후 연락드리겠습니다.</div>
+                <div class="mail-notice">버튼이 작동하지 않을 경우 <strong>3351ben@daum.net</strong>으로 직접 연락주세요.</div>
             </form>
         </div>
     </div>
@@ -104,7 +109,7 @@
     <span class="footer-logo">공감탐정행정사사무소</span>
     <div style="color:var(--accent); font-weight:bold; font-size:1.4em; margin-bottom:10px;">010-8128-1079</div>
     <div style="margin-bottom:15px; color:#eee; font-size:0.95em;">💳 전 업무 카드 결제 환영 (할부 가능)</div>
-    <div style="margin-bottom:5px;">사업자번호: 821-46-01200 | 통신판매업신고 완료</div>
+    <div style="margin-bottom:5px;">사업자번호: 821-46-01200</div>
     <div>이메일: 3351ben@daum.net | FAX: 02-733-8816</div>
     <div class="addr-grid">
         <div class="addr-item"><span class="lang-tag">KR</span>서울시 종로구 우정국로 39, 401호</div>
