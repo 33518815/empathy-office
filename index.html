@@ -6,82 +6,217 @@
     <title>공감탐정행정사사무소</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
-        :root { --primary-navy: #0d1b2a; --point-gold: #c5a059; --accent-red: #b22222; --bg-light: #fdfdfd; }
+
+        :root {
+            --primary-navy: #0d1b2a;
+            --point-gold: #c5a059;
+            --accent-red: #b22222;
+            --bg-light: #fdfdfd;
+        }
+
         body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: #333; line-height: 1.6; word-break: keep-all; }
-        header { background: linear-gradient(135deg, var(--primary-navy) 0%, #1b263b 100%); color: #fff; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--point-gold); }
-        .brand-container { display: flex; align-items: center; justify-content: center; gap: 25px; }
-        .symbol-wrapper { position: relative; width: 95px; height: 95px; display: flex; align-items: center; justify-content: center; }
-        .symbol-g { font-size: 62px; font-weight: 900; color: var(--point-gold); z-index: 2; margin-top: -5px; }
-        .symbol-magnifier-circle { position: absolute; width: 80px; height: 80px; border: 6px solid var(--point-gold); border-radius: 50%; z-index: 1; }
-        .symbol-handle-diagonal { position: absolute; width: 32px; height: 9px; background: var(--point-gold); bottom: 6px; right: -12px; transform: rotate(45deg); border-radius: 0 4px 4px 0; }
-        header h1 { font-weight: 900; font-size: 3.4rem; margin: 0; letter-spacing: -2px; }
-        .header-en { font-size: 1.1rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.7); margin-top: 5px; text-transform: uppercase; }
-        .promo-txt { font-size: 1.15rem; color: var(--point-gold); margin: 20px 0; }
-        .emergency-banner { display: inline-block; background: var(--accent-red); color: #fff; padding: 8px 25px; border-radius: 50px; font-weight: 700; margin-top: 20px; }
+        
+        header { 
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #1b263b 100%);
+            color: #fff; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--point-gold);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .symbol-wrapper {
+            position: relative;
+            width: 95px;
+            height: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .symbol-g {
+            font-size: 62px;
+            font-weight: 900;
+            color: var(--point-gold);
+            z-index: 2;
+            line-height: 1;
+            margin-top: -5px;
+        }
+
+        .symbol-magnifier-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 6px solid var(--point-gold);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .symbol-handle-diagonal {
+            position: absolute;
+            width: 32px;
+            height: 9px;
+            background: var(--point-gold);
+            bottom: 6px;
+            right: -12px;
+            transform: rotate(45deg);
+            border-radius: 0 4px 4px 0;
+        }
+
+        header h1 { font-weight: 900; font-size: 3.4rem; margin: 0; letter-spacing: -2px; color: #fff; }
+        .header-en { font-size: 1.1rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.7); margin-top: 5px; font-weight: 300; text-transform: uppercase; }
+
+        .promo-wrap { margin-top: 25px; }
+        .promo-txt { font-size: 1.15rem; color: var(--point-gold); font-weight: 400; margin: 10px 0; }
+        
+        .emergency-banner {
+            display: inline-block;
+            background: var(--accent-red);
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+
         .container { max-width: 1100px; margin: auto; padding: 50px 20px; }
         .section-title { text-align: center; font-size: 2.3rem; font-weight: 800; margin-bottom: 45px; color: var(--primary-navy); }
-        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .service-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; }
-        .service-header { padding: 25px; font-weight: 700; font-size: 1.25rem; background: #fafafa; color: var(--primary-navy); }
-        .service-content { padding: 25px; color: #555; border-top: 1px solid #eee; }
-        /* 연결 버튼 */
-        .btn-link-main { display: block; max-width: 400px; margin: 40px auto; text-align: center; background: var(--primary-navy); color: var(--point-gold); padding: 15px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid var(--point-gold); }
-        .info-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 60px 0; }
-        .info-box { background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 10px; }
+
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .service-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; transition: 0.3s; overflow: hidden; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--point-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .service-header { 
+            padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-weight: 700; font-size: 1.25rem; color: var(--primary-navy); background: #fafafa;
+        }
+
+        .service-content { padding: 25px; display: none; color: #555; font-size: 1.1rem; border-top: 1px solid #eee; background: #fff; }
+        
+        /* 추가: 메인 연결 버튼 */
+        .main-link-btn {
+            display: block; width: fit-content; margin: 40px auto; padding: 15px 30px;
+            background: var(--primary-navy); color: var(--point-gold); text-decoration: none;
+            border-radius: 8px; font-weight: bold; border: 1px solid var(--point-gold);
+        }
+
+        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 60px; }
+        .info-box { background: #fff; border: 1px solid #eee; padding: 35px; border-radius: 10px; }
+        .info-box h3 { color: var(--primary-navy); border-bottom: 2px solid var(--point-gold); padding-bottom: 15px; margin-top: 0; }
+        .info-box ul { padding-left: 20px; color: #555; }
+        .info-box li { margin-bottom: 10px; }
+
         footer { background: #f1f3f5; padding: 70px 20px; border-top: 1px solid #dee2e6; text-align: center; }
         .footer-phone { font-size: 3.2rem; font-weight: 900; color: var(--accent-red); text-decoration: none; display: block; margin: 20px 0; }
+        .multilang-addr { font-size: 0.9rem; color: #666; margin-top: 30px; line-height: 1.8; }
     </style>
 </head>
 <body>
+
 <header>
     <div class="brand-container">
-        <div class="symbol-wrapper"><div class="symbol-magnifier-circle"></div><div class="symbol-handle-diagonal"></div><div class="symbol-g">G</div></div>
+        <div class="symbol-wrapper">
+            <div class="symbol-magnifier-circle"></div>
+            <div class="symbol-handle-diagonal"></div>
+            <div class="symbol-g">G</div>
+        </div>
         <div>
             <h1>공감탐정행정사사무소</h1>
             <div class="header-en">GONGGAM Private Investigation & Administrative Office</div>
         </div>
     </div>
-    <p class="promo-txt">"치우침 없는 사실 확인과 체계적인 서류 정리로 투명한 서비스를 제공합니다."</p>
+    <div class="promo-wrap">
+        <p class="promo-txt">"치우침 없는 사실 확인과 체계적인 서류 정리로 투명한 서비스를 제공합니다."</p>
+    </div>
     <div class="emergency-banner">☎ 24시간 상담 예약 | 010-8128-1079</div>
 </header>
+
 <div class="container">
     <h2 class="section-title">주요 서비스 안내</h2>
+    
     <div class="service-grid">
-        <div class="service-card"><div class="service-header">🔍 증거 수집 및 사실관계 정리</div><div class="service-content">민·형사 소송 준비를 위한 기초 자료 및 정황 증거 확보를 지원합니다.</div></div>
-        <div class="service-card"><div class="service-header">👤 가출·실종 및 대상자 소재 파악</div><div class="service-content">가족의 가출, 실종 등 절박한 상황에서 신속한 위치 확인을 돕습니다.</div></div>
-        <div class="service-card"><div class="service-header">🏢 기업 부정 조사 및 보안 컨설팅</div><div class="service-content">내부 횡령, 정보 유출 등 기업 경영상의 리스크를 조사합니다.</div></div>
-        <div class="service-card"><div class="service-header">🛡️ 스토킹 피해 조사 및 신변 보호</div><div class="service-content">개인 사생활 침해 및 스토킹 위협에 대한 대응 및 예방을 지원합니다.</div></div>
-        <div class="service-card"><div class="service-header">📡 도감청 탐색 및 디지털 보안 점검</div><div class="service-content">불법 기기 설치 여부를 정밀 탐색하여 소중한 프라이버시를 지킵니다.</div></div>
-        <div class="service-card"><div class="service-header">⚖️ 행정사실확인증명서 발급 연계</div><div class="service-content">조사 내용을 바탕으로 법적 효력을 갖춘 사실확인 서류 작성을 지원합니다.</div></div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v1')"><span>🔍 증거 수집 및 사실관계 정리</span> <span>▼</span></div>
+            <div id="v1" class="service-content">민·형사 소송 준비를 위한 기초 자료 및 정황 증거 확보를 지원합니다.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v2')"><span>👤 가출·실종 및 대상자 소재 파악</span> <span>▼</span></div>
+            <div id="v2" class="service-content">가족의 가출, 실종 등 절박한 상황에서 신속한 위치 확인을 돕습니다.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v3')"><span>🏢 기업 부정 조사 및 보안 컨설팅</span> <span>▼</span></div>
+            <div id="v3" class="service-content">내부 횡령, 정보 유출 등 기업 경영상의 리스크를 조사합니다.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v4')"><span>🛡️ 스토킹 피해 조사 및 신변 보호</span> <span>▼</span></div>
+            <div id="v4" class="service-content">개인 사생활 침해 및 스토킹 위협에 대한 대응 및 예방을 지원합니다.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v5')"><span>📡 도감청 탐색 및 디지털 보안 점검</span> <span>▼</span></div>
+            <div id="v5" class="service-content">불법 기기 설치 여부를 정밀 탐색하여 소중한 프라이버시를 지킵니다.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-header" onclick="toggle('v6')"><span>⚖️ 행정사실확인증명서 발급 연계</span> <span>▼</span></div>
+            <div id="v6" class="service-content">조사 내용을 바탕으로 법적 효력을 갖춘 사실확인 서류 작성을 지원합니다.</div>
+        </div>
     </div>
 
-    <a href="https://33518815.github.io/" class="btn-link-main">🏛️ 행정사·위약금 심사 홈페이지로 이동</a>
+    <a href="https://33518815.github.io/" class="main-link-btn">🏛️ 행정사·위약금 심사 메인으로 가기</a>
 
     <div class="info-section">
-        <div class="info-box"><h3>NOTICE</h3><p>모든 업무는 합법적 절차를 준수하며 비밀을 보호합니다.</p></div>
-        <div class="info-box"><h3>CHECK LIST</h3><ul><li>상담 전 사건 정리</li><li>관련 서류 준비</li><li>도장 지참 권장</li></ul></div>
-        <div class="info-box"><h3>WORK PROCESS</h3><ul><li>상담 및 절차 안내</li><li>사실관계 확인</li><li><b>상황 공유 및 안내</b></li></ul></div>
+        <div class="info-box">
+            <h3>NOTICE</h3>
+            <p>모든 업무는 합법적 절차를 준수하며, 의뢰인의 비밀을 최우선으로 보호합니다.</p>
+        </div>
+        <div class="info-box">
+            <h3>CHECK LIST</h3>
+            <ul>
+                <li>상담 전 사건의 전후 관계 정리(날짜, 대상 등)</li>
+                <li>관련 서류(계약서, 메시지 등) 준비</li>
+                <li>서류 작성을 위한 도장 지참 권장</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>WORK PROCESS</h3>
+            <ul>
+                <li>기초 상황 상담 및 관련 절차 안내</li>
+                <li>사실관계 확인 및 자료 정리</li>
+                <li>행정적 기준에 따른 상황 분석</li>
+                <li><b>사건별 상황 공유 및 안내</b></li>
+            </ul>
+        </div>
     </div>
 </div>
+
 <footer>
-    <div style="font-weight:900; color:var(--primary-navy);">GONGGAM PRIVATE INVESTIGATION & ADMINISTRATIVE OFFICE</div>
+    <div style="font-weight:900; color:var(--primary-navy); letter-spacing: 2px;">GONGGAM PRIVATE INVESTIGATION & ADMINISTRATIVE OFFICE</div>
     <a href="tel:01081281079" class="footer-phone">010-8128-1079</a>
-    <div style="font-size: 1.1rem;">이메일: 3351ben@daum.net | 사업자: 821-46-01200</div>
-    <div style="margin-top:20px; font-size:0.9rem; color:#666;">
-        📍 [KR] 서울시 종로구 우정국로 39, 401호<br>
-        📍 [EN] #401, 39, Ujeongguk-ro, Jongno-gu, Seoul<br>
-        📍 [CN] 首尔特别市 钟路区 牛亭局로 39, 401호
+    <div style="font-size: 1.15rem; color:#444;">이메일: 3351ben@daum.net | 사업자: 821-46-01200</div>
+    
+    <div class="multilang-addr">
+        [KR] 서울시 종로구 우정국로 39, 401호 (견지동, 우정에쉐르)<br>
+        [EN] #401, 39, Ujeongguk-ro, Jongno-gu, Seoul, Republic of Korea<br>
+        [CN] 首尔特别市 钟路区 牛亭局로 39, 401호<br>
+        [JP] ソウル特別市 鍾路区 牛亭局路 39, 401号<br>
+        [VN] Phòng 401, 39, Ujeongguk-ro, Jongno-gu, Seoul
     </div>
 </footer>
+
+<script>
+    function toggle(id) {
+        const target = document.getElementById(id);
+        const isOpen = target.style.display === 'block';
+        document.querySelectorAll('.service-content').forEach(el => el.style.display = 'none');
+        target.style.display = isOpen ? 'none' : 'block';
+    }
+</script>
+
 </body>
 </html>
-2. 오늘 홈페이지 메뉴에 '연결 링크' 넣기
-오늘 홈페이지(33518815.github.io)의 메뉴(nav) 부분에 아래 한 줄만 추가하시면 됩니다.
-
-HTML
-<nav>
-    <a href="#about">사무소 소개</a>
-    <a href="#service">전담 업무</a>
-    <a href="#postal">전국 민원 접수</a>
-    <a href="https://33518815.github.io/empathy-office/" style="color:#b22222;">🔍 탐정 서비스 보기</a>
-</nav>
