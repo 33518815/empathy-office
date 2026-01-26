@@ -3,52 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공감탐정행정사사무소 - 전국 행정 민원 대행</title>
+    <title>공감탐정행정사사무소</title>
     <style>
-        body { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f4f4f4; }
-        .top-banner { background-color: #e63946; color: white; padding: 15px; text-align: center; font-size: 1.2rem; font-weight: bold; position: sticky; top: 0; z-index: 1000; text-decoration: none; display: block; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .hero { background-color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid #e63946; }
-        .hero h1 { font-size: 1.8rem; color: #1a1a1a; margin-bottom: 10px; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #e63946; }
-        .service-card h3 { margin-top: 0; color: #e63946; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .service-card ul { padding-left: 20px; margin-bottom: 0; }
-        .service-card li { margin-bottom: 8px; font-size: 0.95rem; }
-        .bottom-call { background: white; padding: 40px 20px; text-align: center; margin-top: 20px; border-top: 1px solid #ddd; }
-        .phone-btn { background-color: #e63946; color: white; padding: 20px 40px; font-size: 1.8rem; font-weight: bold; text-decoration: none; border-radius: 50px; display: inline-block; box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4); margin-top: 15px; }
-        .footer-text { margin-top: 20px; color: #666; font-size: 0.9rem; }
-        @media (max-width: 600px) { .hero h1 { font-size: 1.5rem; } .phone-btn { font-size: 1.5rem; padding: 15px 30px; } }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        :root { --primary-navy: #0d1b2a; --real-gold: #c5a059; --accent-red: #b22222; --bg-light: #fdfdfd; --security-blue: #e9f2ff; }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: #333; line-height: 1.6; word-break: keep-all; }
+        header { background: linear-gradient(135deg, var(--primary-navy) 0%, #1b263b 100%); color: #fff; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--real-gold); }
+        .brand-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; }
+        .symbol-svg-wrapper { width: 90px; height: 90px; }
+        header h1 { font-weight: 900; font-size: 2.8rem; margin: 0; letter-spacing: -2px; }
+        .header-en { font-size: 1rem; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; margin-top: 5px; }
+        .promo-wrap { margin-top: 25px; }
+        .promo-txt { font-size: 1.1rem; color: var(--real-gold); font-weight: 400; margin: 5px 0; }
+        
+        /* 상단 배너 스타일 수정: 클릭 가능하게 변경 */
+        .emergency-banner { 
+            display: inline-block; 
+            background: var(--accent-red); 
+            color: #fff; 
+            padding: 10px 25px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            margin-top: 20px; 
+            text-decoration: none; /* 밑줄 제거 */
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .emergency-banner:hover { transform: scale(1.05); }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        .security-banner { background-color: var(--security-blue); border: 1px solid #cce0ff; border-radius: 8px; padding: 15px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 10px; color: #2c5282; font-weight: 600; }
+        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 40px; }
+        @media (max-width: 768px) { .service-grid { grid-template-columns: 1fr; } }
+        .service-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; overflow: hidden; }
+        .service-header { padding: 20px; font-weight: 800; font-size: 1.2rem; color: var(--primary-navy); background: #fafafa; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .service-body { padding: 20px; font-size: 1rem; color: #444; display: none; background: #fff; border-top: 1px solid #eee; line-height: 1.5; }
+        .prep-section { background: #fff; border: 2px solid var(--real-gold); padding: 30px; border-radius: 12px; margin-bottom: 50px; }
+        .prep-section h3 { font-size: 1.5rem; color: var(--primary-navy); margin: 0 0 20px 0; text-align: center; }
+        .prep-box { display: flex; flex-direction: column; gap: 12px; font-size: 1.1rem; }
+        .prep-box div { padding-left: 25px; position: relative; }
+        .prep-box div::before { content: '✔'; color: var(--real-gold); position: absolute; left: 0; font-weight: bold; }
+        .prep-box b { font-weight: 900; color: #000; }
+        .prep-address { margin-top: 20px; padding: 15px; background: #fdf8ef; border-radius: 8px; border-left: 4px solid var(--real-gold); font-weight: 600; }
+        footer { background: #f1f3f5; padding: 50px 20px; border-top: 1px solid #dee2e6; text-align: center; }
+        .footer-phone { font-size: 2.8rem; font-weight: 900; color: var(--accent-red); text-decoration: none; display: block; margin: 10px 0; }
+        .lang-addr-grid { display: grid; grid-template-columns: 1fr 1fr; text-align: left; max-width: 1000px; margin: 30px auto 0; gap: 15px 40px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 0.9rem; color: #555; }
+        @media (max-width: 768px) { .lang-addr-grid { grid-template-columns: 1fr; } }
+        .lang-item b { color: var(--primary-navy); min-width: 40px; display: inline-block; font-weight: 700; }
     </style>
 </head>
 <body>
-
-    <a href="tel:01081281079" class="top-banner">
-        ☎ 공감탐정행정사사무소 (상담: 010-8128-1079)
-    </a>
-
-    <div class="hero">
+<header>
+    <div class="brand-wrapper">
+        <div class="symbol-svg-wrapper">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="35" stroke="#c5a059" stroke-width="5" fill="none" />
+                <text x="45" y="61" font-family="Arial, sans-serif" font-weight="900" font-size="48" fill="#c5a059" text-anchor="middle">G</text>
+                <line x1="72" y1="72" x2="92" y2="92" stroke="#c5a059" stroke-width="8" stroke-linecap="round" />
+            </svg>
+        </div>
         <h1>공감탐정행정사사무소</h1>
-        <p>전문적인 행정 서비스로 고객의 권익을 보호합니다.</p>
+    </div>
+    <div class="header-en">GONGGAM Private Investigation & Administrative Office</div>
+    <div class="promo-wrap">
+        <p class="promo-txt">"사실관계 확인과 행정 서류 작성을 통해 민원 업무를 조력합니다."</p>
+        <p class="promo-txt">"현장 조사와 절차 안내를 바탕으로 신속한 처리를 돕겠습니다."</p>
+    </div>
+    
+    <a href="tel:01081281079" class="emergency-banner">☎ 전국 행정 민원 대행 서비스 (상담연결)</a>
+</header>
+
+<div class="container">
+    <div class="security-banner">🔒 <b>민원인 비밀유지 및 개인정보 보호 엄수:</b> 의뢰하신 모든 상담 내용은 관련 법령에 의거 철저히 보안 관리됩니다.</div>
+    
+    <div class="service-grid">
+        <div class="service-card"><div class="service-header" onclick="toggleView('s1')">탐정업무 및 사실조사 <span>▼</span></div><div id="s1" class="service-body">민원 현장의 원인과 경위를 직접 조사합니다.<br>조사 내용을 바탕으로 사실확인 보고서를 작성합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s2')">영업정지 및 행정처분 구제 <span>▼</span></div><div id="s2" class="service-body">처분사전통지서에 따른 의견서 작성을 대행합니다.<br>집행정지 신청을 통해 행정처분의 효력 일시 정지를 돕습니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s3')">행정심판 청구 및 서면 대행 <span>▼</span></div><div id="s3" class="service-body">행정심판위원회 제출용 보충서면 작성을 조력합니다.<br>부당한 처분에 대응하는 민원 서류 제출을 지원합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s4')">학교폭력 사안 사실조사 <span>▼</span></div><div id="s4" class="service-body">사건 경위를 확인하고 필요한 자료 준비를 돕습니다.<br>학폭위 소명 및 관련 행정 절차 진행을 지원합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s5')">채무자 주소 및 소재지 확인 <span>▼</span></div><div id="s5" class="service-body">법령에 근거하여 관계인의 주소지를 확인합니다.<br>소재 파악을 통해 민원 해결에 필요한 정보를 제공합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s6')">디지털 보안 및 도감청 탐색 <span>▼</span></div><div id="s6" class="service-body">도·감청 기기 설치 여부를 탐지 장비로 확인합니다.<br>정보 보호를 위한 보안 수색을 성실히 실시합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s7')">상가 권리금 계약 등 사실확인 <span>▼</span></div><div id="s7" class="service-body">상가 권리금 계약 및 관계에 대한 조사를 수행합니다.<br>계약 내용 확인 및 민원 대응을 위한 보고서를 작성합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s8')">토지보상 및 수용 사실조사 <span>▼</span></div><div id="s8" class="service-body">수용 과정에서 누락된 물건 및 권리 내역을 조사합니다.<br>보상 절차 진행을 위한 사실 확인 자료를 준비합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s9')">출입국 비자 및 체류 행정 <span>▼</span></div><div id="s9" class="service-body">비자 신청과 자격 연장 등 출입국 민원을 대행합니다.<br>외국인 체류 관련 행정 절차를 신속하게 처리합니다.</div></div>
+        <div class="service-card"><div class="service-header" onclick="toggleView('s10')">진정서·탄원서·내용증명 작성 <span>▼</span></div><div id="s10" class="service-body">의뢰인의 상황을 담은 진정서 및 탄원서를 작성합니다.<br>내용증명 작성을 통해 민원 해결 과정을 조력합니다.</div></div>
     </div>
 
-    <div class="services">
-        <div class="service-card"><h3>1. 인허가 및 면허 대행</h3><ul><li>영업인허가, 공장설립, 건설업 등록</li><li>각종 면허 취득 및 갱신 업무</li></ul></div>
-        <div class="service-card"><h3>2. 토지보상 및 수용</h3><ul><li>잔여지 보상, 영업손실 보상</li><li>토지 수용에 따른 이의신청 및 재결</li></ul></div>
-        <div class="service-card"><h3>3. 음주운전 및 면허 구제</h3><ul><li>음주운전 행정심판, 이의신청</li><li>면허 정지·취소 처분 구제 상담</li></ul></div>
-        <div class="service-card"><h3>4. 출입국 및 외국인 행정</h3><ul><li>비자 변경(E-7, F-2, F-5 등)</li><li>영주권, 국적 취득, 체류자격 연장</li></ul></div>
-        <div class="service-card"><h3>5. 국가유공자 등록 대행</h3><ul><li>국가유공자 및 보훈대상자 요건 신청</li><li>등록 거부 처분에 대한 이의신청</li></ul></div>
-        <div class="service-card"><h3>6. 학교폭력 및 징계 구제</h3><ul><li>학교폭력 대책심의위원회 대응</li><li>학생 징계 및 교원 권익 구제</li></ul></div>
-        <div class="service-card"><h3>7. 법인 및 단체 설립</h3><ul><li>비영리 사단/재단법인 설립</li><li>임의단체, 협동조합 설립 신고</li></ul></div>
-        <div class="service-card"><h3>8. 내용증명 및 계약서 작성</h3><ul><li>권리관계 서류 작성, 합의서 작성</li><li>채권채무 관련 내용증명 발송</li></ul></div>
-        <div class="service-card"><h3>9. 행정심판 및 이의신청</h3><ul><li>부당한 행정처분에 대한 심판 청구</li><li>영업정지 및 과징금 감경 신청</li></ul></div>
-        <div class="service-card"><h3>10. 인증 및 정책자금 상담</h3><ul><li>HACCP, ISO 인증 대행</li><li>중소기업 정책자금 신청 행정지원</li></ul></div>
+    <div class="prep-section">
+        <h3>민원서류 대행 시 구비서류</h3>
+        <div class="prep-box">
+            <div><b>신분증</b> (원본을 등기 동봉해 주세요)</div>
+            <div><b>도장</b> (서류 날인용)</div>
+            <div><b>위임장</b></div>
+            <div><b>처분통지서 사본 및 기타 참고서류</b> (보유하신 증거 자료)</div>
+            <div><b>예약제 출장 방문상담 가능</b> (근거리 사전 예약 시 방문 가능)</div>
+        </div>
+        <div class="prep-address">📍 등기우편 보내실 주소: <b>(서울시 종로구 우정국로 39, 우정에쉐르 401호)</b> 공감탐정행정사사무소 앞</div>
     </div>
+</div>
 
-    <div class="bottom-call">
-        <p><strong>전문가와 지금 바로 상담하세요!</strong></p>
-        <a href="tel:01081281079" class="phone-btn">☎ 전화 바로 연결</a>
-        <p class="footer-text">공감탐정행정사사무소 | 대표전화: 010-8128-1079<br>전국 어디서나 비대면 상담 가능</p>
+<footer>
+    <div style="font-size: 2.2rem; font-weight: 900; color: var(--primary-navy);">공감탐정행정사사무소</div>
+    <a href="tel:01081281079" class="footer-phone">010-8128-1079</a>
+    <div style="font-size:1.1rem; color:var(--primary-navy); margin-bottom:20px;">FAX: 02-733-8816 | E-MAIL: 3351ben@daum.net</div>
+    <div class="lang-addr-grid">
+        <div class="lang-item"><b>[KR]</b> 서울시 종로구 우정국로 39, 우정에쉐르 401호</div>
+        <div class="lang-item"><b>[EN]</b> #401, 39, Ujeongguk-ro, Jongno-gu, Seoul</div>
+        <div class="lang-item"><b>[CN]</b> 首尔特别市 钟路区 牛亭局로 39, 401号</div>
+        <div class="lang-item"><b>[JP]</b> 서울特別市 鍾路区 郵政局路 39, 401호</div>
+        <div class="lang-item"><b>[VN]</b> Phòng 401, 39, Ujeongguk-ro, Jongno-gu, Seoul</div>
+        <div class="lang-item"><b>[TH]</b> ห้อง 401, 39, Ujeongguk-ro, Jongno-gu, โซล</div>
     </div>
+</footer>
 
+<script>
+    function toggleView(id) {
+        var x = document.getElementById(id);
+        var all = document.getElementsByClassName("service-body");
+        for (var i = 0; i < all.length; i++) { if (all[i].id !== id) all[i].style.display = "none"; }
+        x.style.display = (x.style.display === "block") ? "none" : "block";
+    }
+</script>
 </body>
 </html>
