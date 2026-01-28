@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비자·아포스티유 지원센터</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+        :root { 
+            --royal-bg: #2d1b18; 
+            --accent-gold: #c5a059; 
+            --main-navy: #1a2a3a;
+            --admin-green: #2e4d3a;
+        }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background: #fff; color: #333; line-height: 1.6; word-break: keep-all; }
+        
+        header { 
+            background: linear-gradient(135deg, #1a0f0d 0%, var(--royal-bg) 100%); 
+            color: #fff; padding: 50px 20px; text-align: center; border-bottom: 6px solid var(--accent-gold); 
+        }
+        .brand-zone { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; }
+        .symbol-large { width: 65px; height: 65px; flex-shrink: 0; }
+        .office-name-mid { font-size: 2.6rem; font-weight: 900; color: #fff; letter-spacing: 1px; }
+        .center-sub-title { font-size: 1.7rem; font-weight: 700; color: var(--accent-gold); border-top: 1px solid rgba(197, 160, 89, 0.4); display: inline-block; padding-top: 10px; }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        .section-title { font-size: 1.6rem; font-weight: 900; color: var(--royal-bg); border-left: 8px solid var(--accent-gold); padding-left: 15px; margin: 40px 0 20px; }
+
+        /* 수수료 및 기간 표 */
+        .info-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 30px; border: 1px solid #ddd; }
+        .info-table th { background: #f8f5f2; padding: 15px; color: var(--royal-bg); border-bottom: 2px solid var(--accent-gold); }
+        .info-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
+        .price-red { color: #b22222; font-weight: 800; }
+
+        /* 업무 안내 카드 */
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 40px; }
+        @media (max-width: 768px) { .work-grid { grid-template-columns: 1fr; } .office-name-mid { font-size: 2rem; } }
+        .work-card { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .work-card h4 { margin: 0 0 15px; color: var(--royal-bg); font-size: 1.3rem; border-bottom: 2px solid var(--accent-gold); padding-bottom: 8px; }
+        .work-card ul { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; }
+        .work-card li { padding: 5px 0 5px 20px; position: relative; }
+        .work-card li::before { content: '◈'; position: absolute; left: 0; color: var(--accent-gold); }
+        .specific-note { margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd; font-size: 0.88rem; color: #888; font-weight: 500; }
+
+        /* 하단 2단 배치 */
+        .bottom-flex-zone { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 50px 0; }
+        @media (max-width: 850px) { .bottom-flex-zone { grid-template-columns: 1fr; } }
+
+        .contact-form-side { background: var(--royal-bg); color: #fff; padding: 30px; border-radius: 15px; }
+        .f-input, .f-select { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 5px; border: none; box-sizing: border-box; font-family: inherit; }
+        .f-select { background: #fff; color: #333; cursor: pointer; }
+        .f-btn { width: 100%; padding: 15px; background: var(--accent-gold); color: #fff; border: none; border-radius: 5px; font-weight: 900; cursor: pointer; }
+
+        .preparation-side { background: #fdfaf5; border: 2px solid var(--accent-gold); padding: 30px; border-radius: 15px; color: #333; }
+        .prep-title { color: var(--royal-bg); font-size: 1.4rem; font-weight: 900; margin-bottom: 20px; text-align: center; border-bottom: 1px solid var(--accent-gold); padding-bottom: 10px; }
+        .prep-item { margin-bottom: 12px; font-size: 0.95rem; }
+        .prep-item b { color: #8b4513; display: block; font-size: 1.05rem; }
+
+        .addr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 40px 0; }
+        .addr-card { padding: 12px; background: #f9f9f9; border: 1px solid #ddd; font-size: 0.82rem; border-radius: 8px; }
+
+        /* 하단 메뉴 이동 (행정사님 주소 적용) */
+        .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 40px 20px; background: #111; }
+        .footer-nav a { padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: 700; color: #fff; font-size: 0.9rem; }
+        .link-main { background: var(--main-navy); }
+        .link-admin { background: var(--admin-green); }
+        .link-visa { background: var(--accent-gold); color: #2d1b18 !important; }
+
+        /* 전화 바로걸기 고정 버튼 */
+        .call-fixed { position: fixed; bottom: 20px; right: 20px; background: #c5a059; color: white; padding: 15px 25px; border-radius: 30px; text-decoration: none; font-weight: 900; z-index: 9999; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand-zone">
+        <svg class="symbol-large" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="45" cy="45" r="35" stroke="#c5a059" stroke-width="7" fill="none" />
+            <text x="45" y="62" font-family="Arial" font-weight="900" font-size="45" fill="#c5a059" text-anchor="middle">G</text>
+            <line x1="72" y1="72" x2="95" y2="95" stroke="#c5a059" stroke-width="12" stroke-linecap="round" />
+        </svg>
+        <h1 class="office-name-mid">공감탐정행정사사무소</h1>
+    </div>
+    <div class="center-sub-title">비자·아포스티유 지원센터</div>
+</header>
+
+<div class="container">
+    <div class="section-title">비자 업무 수수료 및 기간</div>
+    <table class="info-table">
+        <thead>
+            <tr><th>업무 구분</th><th>안내 사항</th><th>표준 기간</th><th>수수료(기본)</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><b>비자 연장/변경</b></td><td>체류자격 변경 및 기간 연장</td><td>2주 ~ 8주</td><td class="price-red">300,000원 ~</td></tr>
+            <tr><td><b>공증/인증 대행</b></td><td>번역공증, 아포스티유 등</td><td>3일 ~ 7일</td><td class="price-red">상의 후 결정</td></tr>
+            <tr><td><b>출입국 사범심사</b></td><td>법위반(벌금 등) 조사대응</td><td>4주 ~ 12주</td><td class="price-red">800,000원 ~</td></tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">업무별 주요 안내</div>
+    <div class="work-grid">
+        <div class="work-card">
+            <h4>💍 국제결혼 비자 (F-6)</h4>
+            <ul>
+                <li>소득 및 주거 등 비자 발급 요건 안내</li>
+                <li>혼인관계 입증 서류 구비 지원</li>
+                <li>출입국관리법 자격 변경 절차 가이드</li>
+            </ul>
+            <div class="specific-note">상황에 따라 추가서류 구비</div>
+        </div>
+        <div class="work-card">
+            <h4>🛂 국가별 비자 서류</h4>
+            <ul>
+                <li>거민증 및 호구부 확인 (중국 서류는 예시)</li>
+                <li>무범죄경력 등 공적 서류 영사확인 안내</li>
+                <li>국가별 비자 신청 필수 서류 가이드</li>
+            </ul>
+            <div class="specific-note">상황에 따라 추가서류 구비</div>
+        </div>
+        <div class="work-card">
+            <h4>🌍 아포스티유 서류</h4>
+            <ul>
+                <li>학위증명, 범죄경력 등 서류 확인</li>
+                <li>대사관 인증 생략 절차 지원</li>
+                <li>제출용 서류의 유효성 검토</li>
+            </ul>
+            <div class="specific-note">상황에 따라 추가서류 구비</div>
+        </div>
+        <div class="work-card">
+            <h4>📄 기타 서류 행정</h4>
+            <ul>
+                <li>비협약 국가 영사 확인 절차 안내</li>
+                <li>신분관계 증명 서류 기재 사항 확인</li>
+                <li>원본 대조 및 제출 가이드 제공</li>
+            </ul>
+            <div class="specific-note">상황에 따라 추가서류 구비</div>
+        </div>
+    </div>
+
+    <div class="bottom-flex-zone">
+        <div class="contact-form-side">
+            <h3 style="text-align:center; color:var(--accent-gold); margin-top:0;">✉ 이메일 상담 신청</h3>
+            <form action="mailto:3351ben@daum.net" method="post" enctype="text/plain">
+                <select name="문의구분" class="f-select" required>
+                    <option value="" disabled selected>문의 분야를 선택하세요</option>
+                    <option value="행정심판">행정심판 관련</option>
+                    <option value="비자/출입국">비자·아포스티유 관련</option>
+                    <option value="탐정사">탐정사 관련</option>
+                    <option value="기타">그외 기타 문의</option>
+                </select>
+                <input type="text" name="성함" class="f-input" placeholder="의뢰인 성함" required>
+                <input type="tel" name="연락처" class="f-input" placeholder="연락처" required>
+                <textarea name="내용" class="f-input" rows="4" placeholder="상담 내용을 적어주세요."></textarea>
+                <button type="submit" class="f-btn">상담 메일 보내기</button>
+            </form>
+        </div>
+
+        <div class="preparation-side">
+            <div class="prep-title">📋 의뢰 시 준비사항</div>
+            <div class="prep-item"><b>1. 신분증 원본</b>여권, 운전면허증 (외국인: 중국 거민증 등)</div>
+            <div class="prep-item"><b>2. 위임장</b>사무소 비치된 표준 위임장 작성</div>
+            <div class="prep-item"><b>3. 인장(도장)</b>의뢰인 본인 날인용 도장</div>
+            <div class="prep-item"><b>4. 기타 구비서류</b>가족관계 등 개별 안내 서류</div>
+            <div class="prep-item"><b>5. 특정 서류 보완</b>상황에 따라 추가서류 구비</div>
+        </div>
+    </div>
+
+    <div class="addr-grid">
+        <div class="addr-card"><b>[KR] 한국어</b> 서울 종로구 우정국로 39, 401호</div>
+        <div class="addr-card"><b>[CN] 中文</b> 首尔特别市 钟路区 牛亭局로 39, 401호</div>
+        <div class="addr-card"><b>[VN] Tiếng Việt</b> Phòng 401, 39, Ujeongguk-ro, Seoul</div>
+        <div class="addr-card"><b>[TH] ภาษาไทย</b> ห้อง 401, 39, Ujeongguk-ro, โซล</div>
+        <div class="addr-card"><b>[JP] 일본어</b> 서울特別市 鍾路区 郵政局路 39, 401호</div>
+        <div class="addr-card"><b>[EN] English</b> #401, 39, Ujeongguk-ro, Seoul</div>
+    </div>
+</div>
+
+<div class="footer-nav">
+    <a href="https://33518815.github.io/" class="link-main">🏠 사무소 메인홈</a>
+    <a href="https://33518815.github.io/empathy-office/" class="link-admin">⚖️ 행정심판 센터</a>
+    <a href="visa.html" class="link-visa">✈️ 비자·서류 센터</a>
+</div>
+
+<footer style="text-align:center; padding:30px; background:#111; color:#888; font-size:0.85rem;">
+    <p>서울특별시 종로구 우정국로 39, 우정에쉐르 401호 (공감탐정행정사사무소)</p>
+    <p>대표 행정사 직통: 010-8128-1079 | FAX: 02-733-8816</p>
+</footer>
+
+<a href="tel:010-8128-1079" class="call-fixed">📞 전화상담 연결</a>
+
+</body>
+</html>
